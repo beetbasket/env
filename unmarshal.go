@@ -30,7 +30,7 @@ func Unmarshal(v any) (help func() string, _ error) {
 
 		key, help, parser, def, err := unmarshalTags(st.Tag)
 		if err != nil {
-			return nil, err
+			return nil, fmt.Errorf("failed to read tags for %q: %v", st.Name, err)
 		}
 
 		var pFn parseFn
